@@ -1,0 +1,53 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+develop-eggs/
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+# ---- Virtual Environments ----
+.venv/
+venv/
+ENV/
+env/
+.conda/
+*.env
+
+# ---- Jupyter Notebooks ----
+.ipynb_checkpoints/
+*.ipynb~
+
+# ---- Logs ----
+*.log
+*.out
+*.err
+
+# ---- IDEs & Editors ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- OS Files ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Data & Models ----
+data/
+!data/sample.csv      # keep sample data if needed
+*.pkl
+*.joblib
+*.h5
+
+# ---- Docker ----
+*.pid

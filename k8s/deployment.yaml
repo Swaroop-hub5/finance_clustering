@@ -1,0 +1,45 @@
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: clustering-api
+      labels:
+        app: clustering-api
+    spec:
+      replicas: 3
+      selector:
+        matchLabels:
+          app: clustering-api
+      template:
+        metadata:
+          labels:
+            app: clustering-api
+        spec:
+          containers:
+          - name: clustering-api
+            image: clustering-api:latest
+            imagePullPolicy: IfNotPresent
+            ports:
+            - containerPort: 8000
+            env:
+            - name: MODELS_DIR
+              value: /models
+            volumeMounts:
+            - name: models
+              mountPath: /models
+          volumes:
+          - name: models
+            emptyDir: {}
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: clustering-service
+    spec:
+      selector:
+        app: clustering-api
+      ports:
+      - protocol: TCP
+        port: 80
+        targetPort: 8000
+      type: ClusterIP
